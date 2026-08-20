@@ -5,22 +5,23 @@ class Solution {
             char ch = s.charAt(i);
             if(ch == '(' || ch == '{' || ch == '['){
                 st.push(ch);
-            } else{
-                if(st.empty()){
-                    return false;
-                }
-                if(ch == ')' && st.peek() != '(' ){
-                    return false;
-                }
-                if(ch == '}' && st.peek() != '{'){
-                    return false;
-                }
-                if(ch == ']' && st.peek() != '['){
-                    return false;
-                }
+            } 
+            else if(ch == ')' && !st.isEmpty() && st.peek() == '('){
                 st.pop();
             }
+            else if(ch == '}' && !st.isEmpty() && st.peek() == '{'){
+                st.pop();
+            }
+            else if(ch == ']' && !st.isEmpty() && st.peek() == '['){
+                st.pop();
+            }
+            else if(ch == ')' || ch == '}' || ch == ']'){
+                return false;
+            }
         }
-        return st.empty();
+        if(!st.empty()){
+            return false;
+        }
+        return true;
     }
 }
