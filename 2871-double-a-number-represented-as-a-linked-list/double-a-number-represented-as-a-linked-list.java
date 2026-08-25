@@ -21,10 +21,10 @@ class Solution {
         BigInteger ans = num.multiply(BigInteger.TWO);
         ListNode head1 = null;
         ListNode tail = null;
-        String s = String.valueOf(ans);
+        String s = ans.toString();
         for(int i = 0; i < s.length(); i++){
-            int dig = s.charAt(i) - '0';
-            ListNode newN = new ListNode(dig);
+            int digit = s.charAt(i) - '0';
+            ListNode newN = new ListNode(digit);
             if(head1 == null){
                 head1 = newN;
                 tail = newN;
