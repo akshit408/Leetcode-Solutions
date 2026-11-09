@@ -4,20 +4,19 @@ class Solution {
         int len = 0;
         int max = 0;
         for(int high = 0; high < s.length(); high++){
-            if(s.charAt(high) == 'a' || s.charAt(high) == 'e' || s.charAt(high) == 'i' || s.charAt(high) == 'o' || s.charAt(high) == 'u'){
-            len++;
+            char ch = s.charAt(high);
+            if(ch == 'a' || ch == 'e' || ch == 'i' || ch == 'o' || ch == 'u'){
+                len++;
             }
-            if(high - low + 1 > k){
-                char left = s.charAt(low);
-                if(left == 'a' || left == 'e' || left == 'i' || left == 'o' || left == 'u'){
-                    len--;
-                }
-                low++;
-            }
-            if(high - low + 1 == k){
-                max = Math.max(max, len);
+                if(high - low + 1 == k){
+                    max = Math.max(len, max);
+                    char left = s.charAt(low);
+                    if(left == 'a' || left == 'e' || left == 'i' || left == 'o' || left =='u'){
+                        len--;
+                    }
+                    low++;
             }
         }
-            return max;
+        return max;
     }
 }
